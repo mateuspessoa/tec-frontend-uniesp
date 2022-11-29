@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova de Front</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .item-2 {
+            margin-bottom: 15px;
+        }
+
+        .input {
+            height: 40px;
+            border-radius: 20px;
+            padding-left: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.496);
+        }
+
+        textarea {
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="content">
+
+                <div class="item">
+                    <label>Nome</label>
+                    <input class="input" type="text" id="nome" name="nome">
+                </div>
+    
+                <div class="item">
+                    <label>E-mail</label>
+                    <input class="input" type="email" id="email" name="email">
+                </div>
+    
+                <div class="item">
+                    <label>Idade</label>
+                    <input class="input" type="number" id="idade" name="idade">
+                </div>
+    
+                <div class="item-2">
+                    <input type="radio" id="maior_idade" name="maior_idade">
+                    <label>Maior de Idade?</label>
+                </div>
+    
+                <div class="item-2">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label>Deseja receber newsletter?</label>
+                </div>
+    
+                <div class="item">
+                    <label>Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="8" cols="40"></textarea>
+                </div>
+    
+                <div class="item">
+                    <input type="submit" value="Enviar" onclick="enviar()">
+                </div>
+        </div>
+    </div>
+    
+
+    <script>
+
+        function enviar() {
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var idade = document.getElementById('idade').value;
+            var maior_idade = document.getElementById('maior_idade');
+            var newsletter = document.getElementById('newsletter');
+            var mensagem = document.getElementById('mensagem').value;
+
+            if(maior_idade.checked){
+                maior_idade = 'true'
+            }else {
+                maior_idade = 'false'
+            }
+
+            if(newsletter.checked){
+                newsletter = 'true'
+            }else {
+                newsletter = 'false'
+            }
+
+            var objDados = {
+                nome: nome,
+                email: email,
+                idade: idade,
+                Maior_de_idade: maior_idade,
+                newsletter: newsletter,
+                mensagem: mensagem
+            }
+
+            console.log(objDados)
+
+            document.getElementById('nome').value=''
+            document.getElementById('email').value=''
+            document.getElementById('idade').value=''
+            
+            //Limpar o radio
+            //Limpar o checkbox
+
+            document.getElementById('mensagem').value=''
+        }
+
+    </script>
+</body>
+</html>
